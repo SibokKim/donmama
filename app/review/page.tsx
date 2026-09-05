@@ -1,5 +1,5 @@
+import { PageLink } from '@/components/page-link';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -103,9 +103,9 @@ export default function ReviewPage() {
           <p className="review-small-note">
             참여 조건과 서비스 제공에 관한 자세한 내용은 직원에게 문의해 주세요.
           </p>
-          <Link className="return-menu" href="/menu">
+          <PageLink className="return-menu" href="/menu">
             메뉴도 둘러보세요 <ArrowRight size={19} strokeWidth={1.4} />
-          </Link>
+          </PageLink>
         </section>
       </main>
       <RestaurantFooter />

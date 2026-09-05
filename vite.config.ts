@@ -46,6 +46,24 @@ export default defineConfig(async () => {
 
   return {
     css: { postcss: { plugins: [tailwindcss()] } },
+    // RSC routes are discovered after the home page. Prebundle their browser
+    // dependencies together so the first navigation keeps one React runtime.
+    environments: {
+      client: {
+        optimizeDeps: {
+          include: [
+            '@base-ui/react/accordion',
+            '@base-ui/react/switch',
+            '@base-ui/react/tabs',
+            'class-variance-authority',
+            'clsx',
+            'tailwind-merge',
+          ],
+        },
+      },
+    },
+    // Preserve the icon package's individual RSC client boundaries.
+    optimizeDeps: { exclude: ['lucide-react'] },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,

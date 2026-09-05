@@ -1,7 +1,7 @@
 'use client';
+import { PageLink } from '@/components/page-link';
 import { useState } from 'react';
 import { FoodPhoto } from '@/components/food-photo';
-import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
@@ -97,13 +97,13 @@ export function MenuBook() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <Link href="/review" className="menu-review-link">
+      <PageLink href="/review" className="menu-review-link">
         <div>
           <span className="eyebrow copper">A LITTLE THANK YOU</span>
           <p>솔직한 후기, 고기 한 접시로 감사드려요.</p>
         </div>
         <ArrowUpRight size={23} strokeWidth={1.3} />
-      </Link>
+      </PageLink>
     </section>
   );
 }
