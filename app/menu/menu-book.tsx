@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { FoodPhoto } from '@/components/food-photo';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -48,6 +49,8 @@ export function MenuBook() {
               </div>
               <span className="category-number">0{index + 1}</span>
             </div>
+            {g.id === 'pork' && <FoodPhoto kind="grill" />}
+            {g.id === 'beef' && <FoodPhoto kind="beef" />}
             <div className="menu-items">
               {g.items.map((item) => (
                 <article key={item.name} className="menu-item">

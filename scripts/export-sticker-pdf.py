@@ -14,7 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 source = ROOT / 'public/downloads/donmama-table-sticker-90x120mm.svg'
 output = ROOT / 'output/pdf/donmama-table-sticker-90x120mm.pdf'
 output.parent.mkdir(parents=True, exist_ok=True)
-pdfmetrics.registerFont(TTFont('GowunBatang', str(ROOT / 'public/fonts/GowunBatang-Regular.ttf')))
+pdfmetrics.registerFont(TTFont('NotoSansKR', str(ROOT / 'public/fonts/NotoSansKR-Regular.ttf')))
+pdfmetrics.registerFont(TTFont('NotoSansKRMedium', str(ROOT / 'public/fonts/NotoSansKR-Medium.ttf')))
 root = ET.parse(source).getroot()
 ns = '{http://www.w3.org/2000/svg}'
 c = canvas.Canvas(str(output), pagesize=(90*mm, 120*mm), pageCompression=1)
@@ -31,7 +32,7 @@ group = root.find(ns+'g')
 for el in group:
     if el.tag==ns+'text':
         text=el.text or ''
-        font='GowunBatang' if el.get('class')=='serif' else 'Helvetica'
+        font=('NotoSansKRMedium' if int(el.get('font-weight','400'))>=500 else 'NotoSansKR') if el.get('class')=='type' else 'Helvetica'
         size=float(el.get('font-size','16')); spacing=float(el.get('letter-spacing','0'))
         x=float(el.get('x')); y=1200-float(el.get('y'))
         width=pdfmetrics.stringWidth(text,font,size)+spacing*(len(text)-1)

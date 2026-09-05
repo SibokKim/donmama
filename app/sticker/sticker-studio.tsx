@@ -29,13 +29,20 @@ export function StickerStudio() {
     setBusy(true);
     setStatus('');
     try {
-      const response = await fetch('/fonts/GowunBatang-Regular.ttf');
-      if (!response.ok) throw new Error('폰트 파일을 불러오지 못했습니다.');
-      const bytes = new Uint8Array(await response.arrayBuffer());
-      let binary = '';
-      for (let i = 0; i < bytes.length; i += 8192)
-        binary += String.fromCharCode(...bytes.subarray(i, i + 8192));
-      const output = createStickerSvg(url, btoa(binary));
+      async function loadFont(path: string) {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error('글꼴을 불러오지 못했습니다.');
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        let binary = '';
+        for (let i = 0; i < bytes.length; i += 8192)
+          binary += String.fromCharCode(...bytes.subarray(i, i + 8192));
+        return btoa(binary);
+      }
+      const [regular, medium] = await Promise.all([
+        loadFont('/fonts/NotoSansKR-Regular.ttf'),
+        loadFont('/fonts/NotoSansKR-Medium.ttf'),
+      ]);
+      const output = createStickerSvg(url, regular, medium);
       const blobUrl = URL.createObjectURL(
         new Blob([output], { type: 'image/svg+xml;charset=utf-8' }),
       );

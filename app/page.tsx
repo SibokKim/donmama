@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { FoodPhoto } from '@/components/food-photo';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -40,37 +41,12 @@ export default function Home() {
             <ArrowUpRight size={28} strokeWidth={1.3} />
           </Link>
         </nav>
+        <FoodPhoto kind="grill" compact />
         <footer className="home-footer">
           <span>주문은 직원에게 말씀해 주세요.</span>
           <span>정성껏 준비하겠습니다.</span>
         </footer>
       </section>
-      <aside className="home-photo">
-        <svg
-          viewBox="1995 77 420 420"
-          preserveAspectRatio="xMidYMid slice"
-          aria-labelledby="grill-photo-title"
-        >
-          <title id="grill-photo-title">
-            돈마마 불판 위에 노릇하게 구운 고기와 김치
-          </title>
-          <image
-            href="/images/donmama-reference.png"
-            width="2455"
-            height="1132"
-          />
-        </svg>
-        <div className="photo-caption">
-          <span className="eyebrow">DONMAMA</span>
-          <p>
-            한 점의 정성.
-            <br />한 끼의 즐거움.
-          </p>
-          <span className="photo-bottom">
-            KOREAN GRILL <ArrowRight size={20} strokeWidth={1} />
-          </span>
-        </div>
-      </aside>
     </main>
   );
 }

@@ -1,7 +1,6 @@
 export const restaurant = {
   name: '돈마마',
-  reviewUrl:
-    'https://map.naver.com/p/search/%EB%8F%88%EB%A7%88%EB%A7%88/place/18363630',
+  reviewUrl: 'https://m.place.naver.com/restaurant/18363630/review/visitor',
   siteUrl: 'https://donmama-table.sappy-guppy-3478.chatgpt.site',
   benefit: '대패삼겹 또는 우삼겹 반 인분',
 };

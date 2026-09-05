@@ -96,7 +96,7 @@ export default function ReviewPage() {
             <ArrowUpRight size={23} strokeWidth={1.5} />
           </a>
           <p className="review-external-note">
-            돈마마 네이버 페이지로 이동합니다.
+            돈마마 네이버 방문자리뷰로 이동합니다.
             <br />
             네이버 로그인과 영수증 인증이 필요할 수 있어요.
           </p>
