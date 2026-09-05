@@ -10,7 +10,9 @@ export function RestaurantHeader({ current }: { current: 'menu' | 'review' }) {
           <span>처음으로</span>
         </PageLink>
         <PageLink href="/" className="wordmark" aria-label="돈마마 홈">
-          돈마마<span>DONMAMA</span>
+          돈마마
+          <span>DONMAMA</span>
+          <small>20년 전통 생고기 전문점</small>
         </PageLink>
         <PageLink
           href={current === 'menu' ? '/review' : '/menu'}

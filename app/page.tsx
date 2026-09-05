@@ -8,7 +8,9 @@ export default function Home() {
       <section className="welcome-panel">
         <header className="home-header">
           <PageLink href="/" className="wordmark" aria-label="돈마마 홈">
-            돈마마<span>DONMAMA</span>
+            돈마마
+            <span>DONMAMA</span>
+            <small>20년 전통 생고기 전문점</small>
           </PageLink>
           <span className="eyebrow">AT YOUR TABLE</span>
         </header>

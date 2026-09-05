@@ -51,6 +51,7 @@ export function MenuBook() {
             </div>
             {g.id === 'pork' && <FoodPhoto kind="grill" />}
             {g.id === 'beef' && <FoodPhoto kind="beef" />}
+            {g.id === 'iberico' && <FoodPhoto kind="iberico" />}
             <div className="menu-items">
               {g.items.map((item) => (
                 <article key={item.name} className="menu-item">

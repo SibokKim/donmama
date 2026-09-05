@@ -148,6 +148,14 @@ svg {
   font-size: 12px;
   letter-spacing: 0.3em;
 }
+.wordmark small {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--copper);
+  white-space: nowrap;
+}
 .home-shell {
   max-width: 1600px;
   min-height: 100svh;
@@ -1118,6 +1126,10 @@ body {
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.18em;
+}
+.wordmark small {
+  font-size: 9px;
+  letter-spacing: 0.04em;
 }
 .home-header > .eyebrow {
   font-size: 10px;
