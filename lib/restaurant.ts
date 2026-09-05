@@ -1,7 +1,7 @@
 export const restaurant = {
   name: '돈마마',
   reviewUrl: 'https://m.place.naver.com/restaurant/18363630/review/visitor',
-  siteUrl: 'https://donmama-table.sappy-guppy-3478.chatgpt.site',
+  siteUrl: 'https://donmama-table.sibok0207.chatgpt.site',
   benefit: '대패삼겹 또는 우삼겹 반 인분',
 };
 
@@ -76,3 +76,4 @@ export const menuGroups: {
   },
 ];
 export const won = (price: number) => price.toLocaleString('ko-KR');
+
