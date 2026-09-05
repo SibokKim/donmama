@@ -18,7 +18,8 @@ const types = {
 
 const server = createServer((request, response) => {
   const requestPath = decodeURIComponent((request.url ?? '/').split('?')[0]);
-  const relativePath = requestPath === '/' ? 'index.html' : requestPath.replace(/^\/+/, '');
+  const publicPath = requestPath.replace(/^\/donmama(?=\/|$)/, '') || '/';
+  const relativePath = publicPath === '/' ? 'index.html' : publicPath.replace(/^\/+/, '');
   const candidate = resolve(root, normalize(relativePath));
   if (!candidate.startsWith(root) || !existsSync(candidate)) {
     response.writeHead(404);

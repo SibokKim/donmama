@@ -11,7 +11,7 @@
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "format": "oxfmt",
-    "export:static": "npm run build && node scripts/export-wwwroot.mjs",
+    "export:static": "node scripts/export-static.mjs",
     "preview:static": "node scripts/serve-wwwroot.mjs"
   },
   "dependencies": {
