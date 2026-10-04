@@ -11,7 +11,53 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@/components/ui/accordion';
-import { menuGroups, won } from '@/lib/restaurant';
+import { menuGroups, won, type MenuItem } from '@/lib/restaurant';
+
+const meatGroups = menuGroups.filter((group) => group.id !== 'meal');
+const mealGroup = menuGroups.find((group) => group.id === 'meal');
+
+function MenuEntry({ item, meat = false }: { item: MenuItem; meat?: boolean }) {
+  return (
+    <article className={`menu-item ${meat ? 'meat-card' : ''}`}>
+      {item.image && (
+        <div className="meat-thumbnail">
+          <Image
+            src={item.image}
+            alt={`${item.name}, 나무 도마에 담은 고기`}
+            width={768}
+            height={768}
+            sizes="(max-width: 480px) 50vw, 216px"
+            unoptimized
+            loading="lazy"
+          />
+        </div>
+      )}
+      <div className="menu-item-copy">
+        <h3>{item.name}</h3>
+        {meat && (
+          <p className="menu-price">
+            {won(item.price)}
+            <small>원</small>
+          </p>
+        )}
+        {item.weight && (
+          <p>
+            {item.origin}
+            <span aria-hidden="true">·</span>
+            {item.weight}g
+          </p>
+        )}
+        {item.season && <p className="season-label">{item.season} 메뉴</p>}
+      </div>
+      {!meat && (
+        <p className="menu-price">
+          {won(item.price)}
+          <small>원</small>
+        </p>
+      )}
+    </article>
+  );
+}
 
 export function MenuBook() {
   const [large, setLarge] = useState(false);
@@ -27,88 +73,59 @@ export function MenuBook() {
           <Switch id="large-menu" checked={large} onCheckedChange={setLarge} />
         </label>
       </div>
-      <Tabs defaultValue="pork" className="menu-tabs">
+      <Tabs defaultValue="meat" className="menu-tabs">
         <TabsList
           variant="line"
           className="category-list"
           aria-label="메뉴 분류"
         >
-          {menuGroups.map((g) => (
-            <TabsTrigger key={g.id} value={g.id} className="category-tab">
-              {g.label}
-            </TabsTrigger>
-          ))}
+          <TabsTrigger value="meat" className="category-tab">
+            고기
+          </TabsTrigger>
+          <TabsTrigger value="meal" className="category-tab">
+            식사
+          </TabsTrigger>
         </TabsList>
-        {menuGroups.map((g, index) => (
-          <TabsContent key={g.id} value={g.id} className="category-panel">
+        <TabsContent value="meat" className="category-panel">
+          {meatGroups.map((group) => (
+            <section
+              key={group.id}
+              className="meat-section"
+              aria-labelledby={`menu-group-${group.id}`}
+            >
+              <div className="meat-section-heading">
+                <p className="eyebrow copper">{group.english}</p>
+                <h2 id={`menu-group-${group.id}`}>{group.label}</h2>
+              </div>
+              <div className="menu-items meat-grid">
+                {group.items.map((item) => (
+                  <MenuEntry key={item.name} item={item} meat />
+                ))}
+              </div>
+            </section>
+          ))}
+          <p className="menu-unit-note">
+            표시된 중량은 1인분 기준입니다.
+            <br />
+            사진은 메뉴 이해를 돕기 위한 연출 이미지입니다.
+          </p>
+        </TabsContent>
+        {mealGroup && (
+          <TabsContent value="meal" className="category-panel">
             <div className="category-heading">
               <div>
-                <p className="eyebrow copper">{g.english}</p>
-                <h2>{g.label}</h2>
-                <p>{g.description}</p>
+                <p className="eyebrow copper">{mealGroup.english}</p>
+                <h2>{mealGroup.label}</h2>
+                <p>{mealGroup.description}</p>
               </div>
-              <span className="category-number">0{index + 1}</span>
             </div>
-            <div
-              className={
-                g.id === 'meal' ? 'menu-items' : 'menu-items meat-grid'
-              }
-            >
-              {g.items.map((item) => (
-                <article
-                  key={item.name}
-                  className={`menu-item ${g.id !== 'meal' ? 'meat-card' : ''}`}
-                >
-                  {item.image && (
-                    <div className="meat-thumbnail">
-                      <Image
-                        src={item.image}
-                        alt={`${item.name}, 나무 도마에 담은 고기`}
-                        width={768}
-                        height={768}
-                        sizes="(max-width: 480px) 50vw, 216px"
-                        unoptimized
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                  <div className="menu-item-copy">
-                    <h3>{item.name}</h3>
-                    {g.id !== 'meal' && (
-                      <p className="menu-price">
-                        {won(item.price)}
-                        <small>원</small>
-                      </p>
-                    )}
-                    {item.weight && (
-                      <p>
-                        {item.origin}
-                        <span aria-hidden="true">·</span>
-                        {item.weight}g
-                      </p>
-                    )}
-                    {item.season && (
-                      <p className="season-label">{item.season} 메뉴</p>
-                    )}
-                  </div>
-                  {g.id === 'meal' && (
-                    <p className="menu-price">
-                      {won(item.price)}
-                      <small>원</small>
-                    </p>
-                  )}
-                </article>
+            <div className="menu-items">
+              {mealGroup.items.map((item) => (
+                <MenuEntry key={item.name} item={item} />
               ))}
             </div>
-            {g.id !== 'meal' && (
-              <p className="menu-unit-note">
-                표시된 중량은 1인분 기준입니다.
-                <br />
-                사진은 메뉴 이해를 돕기 위한 연출 이미지입니다.
-              </p>
-            )}
           </TabsContent>
-        ))}
+        )}
       </Tabs>
       <Accordion className="origin-accordion">
         <AccordionItem value="origins">

@@ -386,7 +386,7 @@ svg {
   min-height: 56px !important;
   height: auto !important;
   display: grid !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   padding: 0 !important;
   border-bottom: 1px solid var(--border);
   border-radius: 0 !important;
@@ -1416,6 +1416,27 @@ body {
 }
 
 /* Individual cut photographs keep a consistent rhythm in the mobile menu. */
+.meat-section + .meat-section {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.meat-section-heading .eyebrow {
+  font-size: 10px;
+}
+.meat-section-heading h2 {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+}
+.meat-section .meat-grid {
+  margin-top: 18px;
+}
+.large-type .meat-section-heading h2 {
+  font-size: 25px;
+}
 .meat-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
