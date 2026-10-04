@@ -31,6 +31,13 @@ for (const route of ['menu', 'review', 'sticker']) {
 const textExtensions = new Set(['.html', '.js', '.css', '.json', '.rsc']);
 const prefix = (text) =>
   text
+    // Vite's preload dependency table omits the leading slash, while its
+    // browser helper adds one. These entries also need the project prefix.
+    .replaceAll('"_next/static/', '"donmama/_next/static/')
+    .replaceAll("'_next/static/", "'donmama/_next/static/")
+    .replaceAll('`_next/static/', '`donmama/_next/static/')
+    // Minified CSS removes quotes around local font and image URLs.
+    .replace(/url\(\/(fonts|images)\//g, 'url(/donmama/$1/')
     .replaceAll('"/_next', '"/donmama/_next')
     .replaceAll("'/_next", "'/donmama/_next")
     .replaceAll('`/_next', '`/donmama/_next')
