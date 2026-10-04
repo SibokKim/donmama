@@ -377,6 +377,7 @@ svg {
 }
 .menu-tabs {
   gap: 0 !important;
+  touch-action: pan-y pinch-zoom;
 }
 .category-list {
   position: sticky;
