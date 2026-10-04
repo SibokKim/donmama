@@ -9,7 +9,11 @@ export function FoodPhoto({
   return (
     <figure className={`food-photo ${compact ? 'food-photo-compact' : ''}`}>
       <Image
-        src={`/images/donmama-${kind}.${kind === 'iberico' ? 'png' : 'webp'}`}
+        src={
+          kind === 'grill'
+            ? '/images/donmama-grill-v2.webp'
+            : `/images/donmama-${kind}.${kind === 'iberico' ? 'png' : 'webp'}`
+        }
         width={1536}
         height={1024}
         unoptimized
@@ -22,7 +26,6 @@ export function FoodPhoto({
         }
         loading="lazy"
       />
-      <figcaption>연출 이미지</figcaption>
     </figure>
   );
 }

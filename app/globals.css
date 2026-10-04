@@ -1392,18 +1392,6 @@ body {
   object-fit: cover;
   object-position: 50% 48%;
 }
-.food-photo figcaption {
-  position: absolute;
-  right: 9px;
-  bottom: 9px;
-  padding: 4px 7px;
-  border-radius: 2px;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: #fff;
-  background: #253026d9;
-}
 .food-photo-compact {
   margin-top: 26px;
   margin-bottom: 0;
