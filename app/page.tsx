@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 const reviewGifts = [
-  { name: '대패삼겹', image: '/images/gift-pork.webp' },
-  { name: '우삼겹', image: '/images/gift-beef.webp' },
+  { name: '대패삼겹', image: '/images/gift-pork-v2.webp' },
+  { name: '우삼겹', image: '/images/gift-beef-v2.webp' },
 ];
 
 export default function Home() {
@@ -54,7 +54,7 @@ export default function Home() {
               <figure key={gift.name} className="review-gift-photo">
                 <Image
                   src={gift.image}
-                  alt={`${gift.name}, 얇게 썬 고기를 접시에 담은 모습`}
+                  alt={`얇은 ${gift.name}을 노릇하게 구워 접시에 담은 모습`}
                   width={600}
                   height={600}
                   sizes="(max-width: 480px) 50vw, 207px"
