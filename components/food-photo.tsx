@@ -19,7 +19,7 @@ export function FoodPhoto({
         unoptimized
         alt={
           kind === 'grill'
-            ? '노릇하게 구운 삼겹살과 김치, 콩나물'
+            ? '노릇하게 구운 삼겹살과 삼겹살 기름에 볶은 김치, 콩나물'
             : kind === 'beef'
               ? '얇게 말아 담은 우삼겹'
               : '결이 선명한 이베리코 목살'
