@@ -31,7 +31,7 @@ export const menuGroups: {
         price: 17000,
         weight: 180,
         origin: '국내산',
-        image: '/images/menu/fresh-pork-v2.webp',
+        image: '/images/menu/fresh-pork-v3.webp',
       },
       {
         name: '유황생삼겹살',
@@ -71,7 +71,7 @@ export const menuGroups: {
       },
       {
         name: '소갈비살',
-        price: 22000,
+        price: 24000,
         weight: 150,
         origin: '미국산',
         image: '/images/menu/beef-rib.webp',
