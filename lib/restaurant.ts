@@ -11,6 +11,7 @@ export type MenuItem = {
   weight?: number;
   origin?: string;
   season?: string;
+  image?: string;
 };
 export const menuGroups: {
   id: string;
@@ -25,9 +26,27 @@ export const menuGroups: {
     english: 'PORK',
     description: '돈마마의 국내산 돼지고기',
     items: [
-      { name: '생오겹목살', price: 17000, weight: 180, origin: '국내산' },
-      { name: '유황생삼겹살', price: 17000, weight: 150, origin: '국내산' },
-      { name: '덜미살 / 꼬들살', price: 18000, weight: 180, origin: '국내산' },
+      {
+        name: '생오겹목살',
+        price: 17000,
+        weight: 180,
+        origin: '국내산',
+        image: '/images/menu/fresh-pork.webp',
+      },
+      {
+        name: '유황생삼겹살',
+        price: 17000,
+        weight: 150,
+        origin: '국내산',
+        image: '/images/menu/pork-belly.webp',
+      },
+      {
+        name: '덜미살 / 꼬들살',
+        price: 18000,
+        weight: 180,
+        origin: '국내산',
+        image: '/images/menu/pork-neck.webp',
+      },
     ],
   },
   {
@@ -36,9 +55,27 @@ export const menuGroups: {
     english: 'BEEF',
     description: '불판 위에서 즐기는 소고기',
     items: [
-      { name: '우삼겹살', price: 15000, weight: 180, origin: '미국산' },
-      { name: '차돌박이', price: 18000, weight: 150, origin: '미국산' },
-      { name: '소갈비살', price: 22000, weight: 150, origin: '미국산' },
+      {
+        name: '우삼겹살',
+        price: 15000,
+        weight: 180,
+        origin: '미국산',
+        image: '/images/menu/beef-belly.webp',
+      },
+      {
+        name: '차돌박이',
+        price: 18000,
+        weight: 150,
+        origin: '미국산',
+        image: '/images/menu/beef-brisket.webp',
+      },
+      {
+        name: '소갈비살',
+        price: 22000,
+        weight: 150,
+        origin: '미국산',
+        image: '/images/menu/beef-rib.webp',
+      },
     ],
   },
   {
@@ -47,12 +84,19 @@ export const menuGroups: {
     english: 'IBÉRICO',
     description: '스페인산 이베리코 흑돼지',
     items: [
-      { name: '이베리코 목살', price: 18000, weight: 150, origin: '스페인산' },
+      {
+        name: '이베리코 목살',
+        price: 18000,
+        weight: 150,
+        origin: '스페인산',
+        image: '/images/menu/iberico-collar.webp',
+      },
       {
         name: '이베리코 갈비살',
         price: 22000,
         weight: 150,
         origin: '스페인산',
+        image: '/images/menu/iberico-rib.webp',
       },
     ],
   },
@@ -76,4 +120,3 @@ export const menuGroups: {
   },
 ];
 export const won = (price: number) => price.toLocaleString('ko-KR');
-

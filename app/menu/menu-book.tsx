@@ -1,7 +1,7 @@
 'use client';
 import { PageLink } from '@/components/page-link';
 import { useState } from 'react';
-import { FoodPhoto } from '@/components/food-photo';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
@@ -49,14 +49,37 @@ export function MenuBook() {
               </div>
               <span className="category-number">0{index + 1}</span>
             </div>
-            {g.id === 'pork' && <FoodPhoto kind="grill" />}
-            {g.id === 'beef' && <FoodPhoto kind="beef" />}
-            {g.id === 'iberico' && <FoodPhoto kind="iberico" />}
-            <div className="menu-items">
+            <div
+              className={
+                g.id === 'meal' ? 'menu-items' : 'menu-items meat-grid'
+              }
+            >
               {g.items.map((item) => (
-                <article key={item.name} className="menu-item">
+                <article
+                  key={item.name}
+                  className={`menu-item ${g.id !== 'meal' ? 'meat-card' : ''}`}
+                >
+                  {item.image && (
+                    <div className="meat-thumbnail">
+                      <Image
+                        src={item.image}
+                        alt={`${item.name}, 나무 도마에 담은 고기`}
+                        width={768}
+                        height={768}
+                        sizes="(max-width: 480px) 50vw, 216px"
+                        unoptimized
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                   <div className="menu-item-copy">
                     <h3>{item.name}</h3>
+                    {g.id !== 'meal' && (
+                      <p className="menu-price">
+                        {won(item.price)}
+                        <small>원</small>
+                      </p>
+                    )}
                     {item.weight && (
                       <p>
                         {item.origin}
@@ -68,15 +91,21 @@ export function MenuBook() {
                       <p className="season-label">{item.season} 메뉴</p>
                     )}
                   </div>
-                  <p className="menu-price">
-                    {won(item.price)}
-                    <small>원</small>
-                  </p>
+                  {g.id === 'meal' && (
+                    <p className="menu-price">
+                      {won(item.price)}
+                      <small>원</small>
+                    </p>
+                  )}
                 </article>
               ))}
             </div>
             {g.id !== 'meal' && (
-              <p className="menu-unit-note">표시된 중량은 1인분 기준입니다.</p>
+              <p className="menu-unit-note">
+                표시된 중량은 1인분 기준입니다.
+                <br />
+                사진은 메뉴 이해를 돕기 위한 연출 이미지입니다.
+              </p>
             )}
           </TabsContent>
         ))}

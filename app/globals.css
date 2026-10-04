@@ -1414,6 +1414,89 @@ body {
   margin-top: 0;
   padding-top: 24px;
 }
+
+/* Individual cut photographs keep a consistent rhythm in the mobile menu. */
+.meat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 16px;
+  margin-top: 24px;
+}
+.menu-item.meat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+.meat-thumbnail {
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 7px;
+  background: #e8e2d7;
+}
+.meat-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.meat-card .menu-item-copy {
+  width: 100%;
+}
+.menu-item.meat-card h3 {
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.035em;
+}
+.meat-card .menu-item-copy .menu-price {
+  margin-top: 5px;
+  color: var(--foreground);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+.meat-card .menu-item-copy p:not(.menu-price) {
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.meat-card .menu-item-copy p span {
+  padding-inline: 5px;
+}
+.menu-unit-note {
+  line-height: 1.8;
+  margin-top: 24px;
+}
+.large-type .meat-grid {
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+.large-type .meat-card h3 {
+  font-size: 23px;
+}
+.large-type .meat-card .menu-item-copy .menu-price {
+  font-size: 25px;
+  text-align: left;
+}
+.large-type .meat-card .menu-item-copy p:not(.menu-price) {
+  font-size: 16px;
+}
+@media (max-width: 360px) {
+  .meat-grid {
+    gap: 24px 12px;
+  }
+  .menu-item.meat-card h3 {
+    font-size: 15px;
+  }
+  .meat-card .menu-item-copy .menu-price {
+    font-size: 19px;
+  }
+}
 @media print {
   .food-photo {
     display: none;
