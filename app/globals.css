@@ -1399,6 +1399,42 @@ body {
 .food-photo-compact img {
   height: 126px;
 }
+.review-gift-preview {
+  margin-top: 24px;
+}
+.review-gift-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.review-gift-photo {
+  margin: 0;
+  min-width: 0;
+}
+.review-gift-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 53%;
+  border-radius: 4px;
+  background: #e8e6de;
+}
+.review-gift-photo figcaption {
+  margin-top: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+.review-gift-choice {
+  margin-top: 14px;
+  color: var(--copper);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
 .welcome-panel > .home-footer {
   margin-top: 0;
   padding-top: 24px;

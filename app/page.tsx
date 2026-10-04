@@ -1,6 +1,11 @@
 import { PageLink } from '@/components/page-link';
-import { FoodPhoto } from '@/components/food-photo';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
+
+const reviewGifts = [
+  { name: '대패삼겹', image: '/images/gift-pork.webp' },
+  { name: '우삼겹', image: '/images/gift-beef.webp' },
+];
 
 export default function Home() {
   return (
@@ -43,7 +48,25 @@ export default function Home() {
             <ArrowUpRight size={28} strokeWidth={1.3} />
           </PageLink>
         </nav>
-        <FoodPhoto kind="grill" compact />
+        <section className="review-gift-preview" aria-label="리뷰 서비스 메뉴">
+          <div className="review-gift-grid">
+            {reviewGifts.map((gift) => (
+              <figure key={gift.name} className="review-gift-photo">
+                <Image
+                  src={gift.image}
+                  alt={`${gift.name}, 얇게 썬 고기를 접시에 담은 모습`}
+                  width={600}
+                  height={600}
+                  sizes="(max-width: 480px) 50vw, 207px"
+                  unoptimized
+                  loading="lazy"
+                />
+                <figcaption>{gift.name}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="review-gift-choice">둘 중 한 가지 · 반 인분 서비스</p>
+        </section>
         <footer className="home-footer">
           <span>주문은 직원에게 말씀해 주세요.</span>
           <span>정성껏 준비하겠습니다.</span>
