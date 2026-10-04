@@ -42,8 +42,8 @@ export default function Home() {
             </div>
             <ArrowUpRight size={28} strokeWidth={1.3} />
           </PageLink>
+          <FoodPhoto kind="grill" compact />
         </nav>
-        <FoodPhoto kind="grill" compact />
         <footer className="home-footer">
           <span>주문은 직원에게 말씀해 주세요.</span>
           <span>정성껏 준비하겠습니다.</span>
